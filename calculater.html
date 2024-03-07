@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html,body{
+            margin: 0%;
+            width: 100%;
+            height: 100%;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div.main{
+            display: flex;
+            gap: 5px;
+            border: none;
+            width: fit-content;
+            height: fit-content;
+            padding: 5px;                     
+        }
+        
+        button{
+            aspect-ratio: 1;
+            width: 20px;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+            transition-duration: .4s;
+            box-shadow: 0px 0px 2px;
+        }
+        button:hover{
+            transition-duration: .4s;
+            box-shadow: 0px 0px 5px 1px black;
+        }
+
+        div.scrin{
+            border: none;
+            width: 90px;
+            height: 20px;
+            margin: 5px;
+            text-align: end;
+            font-weight: 3px;
+            overflow: hidden;
+            padding: 2px;
+            border-radius: 5px;
+            box-shadow: inset 0px 0px 5px black;
+        }
+
+        .body{
+            border: none;
+            width: fit-content;
+            height: fit-content;
+            border-radius: 10px;
+            padding: 8px;
+            background-color: rgb(240, 240, 240);
+            box-shadow: 0px 0px 10px black, inset 0px 0px 10px white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="body">
+    <div class="scrin" id="scrin"></div>
+
+    <div class="main">
+        <button onclick="my(1)" id="button" value="1">1</button>
+        <button onclick="my(2)" id="button" value="2">2</button>
+        <button onclick="my(3)" id="button" value="3">3</button>
+        <button onclick="my('+')" id="button" value="+">+</button>
+    </div>
+    <div class="main">
+        <button onclick="my(4)" id="button" value="4">4</button>
+        <button onclick="my(5)" id="button" value="5">5</button>
+        <button onclick="my(6)" id="button" value="6">6</button>
+        <button onclick="my('-')" id="button" value="-">-</button>
+    </div>
+    <div class="main">
+        <button onclick="my(7)" id="button" value="7">7</button>
+        <button onclick="my(8)" id="button" value="8">8</button>
+        <button onclick="my(9)" id="button" value="9">9</button>
+        <button onclick="my('*')" id="button" value="*">*</button>
+    </div>
+    <div class="main">
+        <button onclick="my(0)" id="button" value="0">0</button>
+        <button onclick="clean()" id="button" value="c">c</button>
+        <button onclick="my('/')" id="button" value="/">/</button>
+        <button onclick="add()" id="button" value="=">=</button>
+    </div>
+</div>
+
+</body>
+
+<script>
+
+function my(x){
+    document.getElementById("scrin").textContent += x;
+}
+
+function clean(){
+    document.getElementById("scrin").textContent = null;
+}
+
+function add(){
+    document.getElementById("scrin").textContent = eval(document.getElementById("scrin").textContent)
+}
+
+</script>
+
+</html>
