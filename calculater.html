@@ -24,21 +24,24 @@
             border-radius: 10px;
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 30px;
         }
 
-        input{
-            width: 220px;
+        div.input{
+            overflow: scroll;
+            width: 200px;
+            height: 20px;
+            font-size: larger;
+            padding: 5px;
             padding-inline: 10px;        
-            font-size:large;
             background-color: transparent;
             text-align: right;
             color: aliceblue;
             border: none;
         }
-        ::placeholder{
-            color: aliceblue;
-        }
+        ::-webkit-scrollbar{display: none;}
+  
 
         div.row{
             display: flex;
@@ -71,7 +74,7 @@
 <body>
     <div class="body">
 
-        <input placeholder="0" type="text" value="" id="input">
+        <div class="input" id="input"></div>
 
         <div class="row">
             <button style="color: rgb(0, 255, 0);" onclick="clean()">AC</button>
@@ -116,25 +119,36 @@
     const input = document.getElementById("input");
 
     function Write(x){
-        input.value += x;
+        input.textContent += x;
     }
 
     function ans(){
-        input.value = eval(input.value);
+        input.textContent = eval(input.textContent);
     }
 
     function clean(){
-        input.value = "";
+        input.textContent = "";
     }
 
     function delate(){
         var after_delate = "";
-        for(let i in input.value){
+        for(let i in input.textContent){
             if (i == 0) continue;
-            else after_delate += input.value[i-1];
+            else after_delate += input.textContent[i-1];
         }
-        input.value = after_delate;
+        input.textContent = after_delate;
     }
+
+    document.addEventListener("keydown",(event)=>{
+        if(event.key == "Enter") ans();
+        else if(event.key == "Backspace") delate();
+        else if(event.key == "Delete") clean();
+        else{
+            for(let i=0; i<10; i++)
+                if (event.key == i) Write(i);
+        }
+        if (event.key == '+' || event.key == '-' || event.key == '*' || event.key == '/') Write(event.key);
+    })
 
 </script>
 </html>
